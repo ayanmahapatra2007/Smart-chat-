@@ -11,65 +11,53 @@ function sendMessage() {
     input.value = "";
 
     const time = new Date();
-    const options = { weekday: 'long' };
-    const day = new Intl.DateTimeFormat('bn-BD', options).format(time);
-    const currentTime = time.toLocaleTimeString('bn-BD');
+    const day = time.toLocaleDateString("bn-BD", { weekday: "long" });
+    const currentTime = time.toLocaleTimeString("bn-BD", { hour: '2-digit', minute: '2-digit' });
 
-    const greetings = ["hii", "hello", "hey", "হাই", "হ্যালো"];
-    const nameQuestions = ["tomar nam", "what is your name", "nam ki"];
-    const makerQuestions = ["ke baniyeche", "who made you", "ayan ke"];
-    const howAreYou = ["kemon acho", "how are you", "কেমন আছো"];
-    const canDo = ["ki paro", "what can you do"];
-    const whereLive = ["kothay thako", "where do you live"];
-    const dayQuestions = ["kon din", "what day", "aj ke din", "ki din", "ajke ki din", "আজ কি দিন"];
-    const timeQuestions = ["somoy", "time", "koto baje", "what's the time", "ki time"];
-    const friend = ["amar bondhu", "tumi amar bondhu"];
-    const goodbye = ["exit", "bye", "biday"];
-    const bhalo = ["bhalo lagche", "valo lagche"];
+    const chatBox = document.getElementById("chat-box");
+    const userPara = document.createElement("p");
+    userPara.textContent = "🧑‍💬 " + userInput;
+    chatBox.appendChild(userPara);
 
-    // নতুন প্রশ্ন
-    const pmIndia = ["bharoter prodhanmontri", "india pm", "pm ke", "ভারতের প্রধানমন্ত্রী"];
-    const cmBengal = ["paschimbanger mukhyo", "west bengal cm", "mukhyo montri ke", "পশ্চিমবঙ্গের মুখ্যমন্ত্রী"];
-    const capitalIndia = ["bharoter rajdhani", "india capital", "ভারতের রাজধানী"];
-    const banglaState = ["bangla kotogulo rajjo", "bangla koy number", "বাংলা কত নম্বর রাজ্য"];
-    const ayanLives = ["ayan kothay thake", "অয়ন কোথায় থাকে"];
+    const pmWords = ["প্রধানমন্ত্রী", "pm", "pradhanmontri", "prodhanmontri"];
+    const cmWords = ["মুখ্যমন্ত্রী", "cm", "mukhyomontri", "mukhomontri"];
+    const timeWords = ["সময়", "somoy", "time", "baje", "koto"];
+    const dateWords = ["আজ", "day", "din", "ki din", "ajke"];
+    const whoMadeWords = ["banieche", "who made", "ayan ke", "creator"];
+    const nameWords = ["nam", "name", "tomar nam", "tumi ke"];
+    const howWords = ["kemon acho", "how are", "kemon", "bhalo"];
+    const whereWords = ["kothay", "where", "kothay thako", "thako"];
+    const friendWords = ["bondhu", "friend"];
+    const capitalWords = ["rajdhani", "capital"];
+    const ayanPlaceWords = ["ayan kothay", "অয়ন কোথায়", "অয়ন কোথায় থাকে"];
 
-    if (goodbye.some(q => userInput.includes(q))) {
-        botReply("বিদায়! ভালো থাকো 😊");
-    } else if (greetings.some(q => userInput.includes(q))) {
-        botReply("হ্যালো! তোমার সাথে কথা বলে ভালো লাগছে 😊");
-    } else if (nameQuestions.some(q => userInput.includes(q))) {
+    if (["exit", "bye", "biday"].some(w => userInput.includes(w))) {
+        botReply("বিদায়! ভালো থাকো 😊");
+    } else if (["hello", "hii", "হাই", "হ্যালো", "hey"].some(w => userInput.includes(w))) {
+        botReply("হ্যালো! তোমার সঙ্গে কথা বলে ভালো লাগছে 😊");
+    } else if (nameWords.some(w => userInput.includes(w))) {
         botReply("আমার নাম ChatBot! 🤖");
-    } else if (makerQuestions.some(q => userInput.includes(q))) {
-        botReply("আমাকে তৈরি করেছে অয়ন মহাপাত্র 🛠️");
-    } else if (howAreYou.some(q => userInput.includes(q))) {
+    } else if (whoMadeWords.some(w => userInput.includes(w))) {
+        botReply("আমাকে বানিয়েছে অয়ন মহাপাত্র 🛠️");
+    } else if (howWords.some(w => userInput.includes(w))) {
         botReply("আমি ভালো আছি, তুমি কেমন আছো? 😊");
-    } else if (canDo.some(q => userInput.includes(q))) {
-        botReply("আমি সাধারণ প্রশ্নের উত্তর দিতে পারি। জিজ্ঞেস করো!");
-    } else if (whereLive.some(q => userInput.includes(q))) {
+    } else if (whereWords.some(w => userInput.includes(w))) {
         botReply("আমি ইন্টারনেটে থাকি! 🌐");
-    } else if (dayQuestions.some(q => userInput.includes(q))) {
+    } else if (dateWords.some(w => userInput.includes(w))) {
         botReply("আজ " + day + "।");
-    } else if (timeQuestions.some(q => userInput.includes(q))) {
+    } else if (timeWords.some(w => userInput.includes(w))) {
         botReply("এখন সময়: " + currentTime);
-    } else if (bhalo.some(q => userInput.includes(q))) {
-        botReply("ধন্যবাদ! তোমাকেও ভালো লাগুক 😊");
-    } else if (friend.some(q => userInput.includes(q))) {
+    } else if (friendWords.some(w => userInput.includes(w))) {
         botReply("হ্যাঁ, আমি তোমার ডিজিটাল বন্ধু! 🤝");
-
-    // 🔻 নতুন প্রশ্নের উত্তর
-    } else if (pmIndia.some(q => userInput.includes(q))) {
+    } else if (pmWords.some(w => userInput.includes(w))) {
         botReply("ভারতের বর্তমান প্রধানমন্ত্রী হচ্ছেন নরেন্দ্র মোদি। 🇮🇳");
-    } else if (cmBengal.some(q => userInput.includes(q))) {
+    } else if (cmWords.some(w => userInput.includes(w))) {
         botReply("পশ্চিমবঙ্গের মুখ্যমন্ত্রী হচ্ছেন মমতা ব্যানার্জী। 🧕");
-    } else if (capitalIndia.some(q => userInput.includes(q))) {
-        botReply("ভারতের রাজধানী হল নতুন দিল্লি (New Delhi)। 🏙️");
-    } else if (banglaState.some(q => userInput.includes(q))) {
-        botReply("বাংলা ভারতের ৪র্থ রাজ্য হিসেবে যুক্ত হয়। 📘");
-    } else if (ayanLives.some(q => userInput.includes(q))) {
-        botReply("অয়ন পশ্চিম মেদিনীপুর জেলার নারায়ণগড় এলাকার বিরবিরা গ্রামে থাকেন। 🏡");
-
+    } else if (capitalWords.some(w => userInput.includes(w))) {
+        botReply("ভারতের রাজধানী হল নতুন দিল্লি। 🏙️");
+    } else if (ayanPlaceWords.some(w => userInput.includes(w))) {
+        botReply("অয়ন পশ্চিম মেদিনীপুরের নারায়ণগড় থানার বিরবিরা গ্রামে থাকেন 🏡");
     } else {
-        botReply("দুঃখিত, আমি সেটা বুঝতে পারিনি। আবার চেষ্টা করো 🙏");
+        botReply("দুঃখিত, আমি এটা বুঝতে পারিনি। অনুগ্রহ করে আরেকবার বলো 🙏");
     }
 }
