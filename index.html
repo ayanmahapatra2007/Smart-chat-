@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>Smart Chat</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Chat - Ayan's ChatBot</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🤖 AyanBot</h1>
-  <p>আমি অয়ন মহাপাত্র। আমি নিজে এই বট বানিয়েছি ChatGPT-এর সাহায্যে।</p>
-  <div id="chat-box"></div>
-  <input type="text" id="user-input" placeholder="প্রশ্ন করুন...">
-  <button onclick="sendMessage()">Send</button>
+  <div class="container">
+    <h1>🤖 Smart Chat</h1>
+    <div id="chat-box" class="chat-box"></div>
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="আপনার প্রশ্ন লিখুন..." onkeydown="if(event.key==='Enter') sendMessage()" />
+      <button onclick="sendMessage()">পাঠান</button>
+    </div>
+    <p class="footer">Created by Ayan Mahapatra with help of ChatGPT ❤️</p>
+  </div>
+
   <script src="chatbot.js"></script>
 </body>
 </html>
