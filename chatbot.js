@@ -22,64 +22,52 @@ function sendMessage() {
   userPara.textContent = "🧑‍💬 " + userInput;
   chatBox.appendChild(userPara);
 
-  // প্রশ্ন match করার জন্য শব্দের তালিকা
-  const pmWords = ["প্রধানমন্ত্রী", "pm", "pradhanmontri", "prodhanmontri"];
-  const cmWords = ["mukhyomontri", "মুখ্যমন্ত্রী", "cm", "banglar mukhyo"];
-  const timeWords = ["somoy", "koto", "baje", "time"];
-  const dateWords = ["aj", "day", "din", "ajke"];
-  const whoMadeWords = ["banieche", "made", "ayan", "create", "creator"];
-  const nameWords = ["nam", "name", "tomar nam", "tumi ke"];
-  const howWords = ["kemon", "valo", "how are"];
-  const whereWords = ["kothay", "location", "thako"];
-  const friendWords = ["bondhu", "friend"];
-  const capitalWords = ["rajdhani", "capital"];
-  const ayanPlaceWords = ["ayan", "thake", "kothay"];
-  const languageWords = ["bhasha", "language"];
-  const countryWords = ["desh", "country", "bharot", "india"];
-  const aiWords = ["ai", "robot", "artificial"];
-  const presidentWords = ["rashtrapoti", "president", "রাষ্ট্রপতি"];
-  const loveWords = ["valobashi", "bhalobashi", "love", "biye"];
-  const jokeWords = ["joke", "hasi", "funny", "mojar"];
+  // স্মার্ট প্রশ্ন ডিটেকশন
+  const includes = (...keywords) => keywords.some(k => userInput.includes(k));
 
-  if (["exit", "bye", "biday"].some(w => userInput.includes(w))) {
+  if (includes("exit", "bye", "biday", "ber hoye jao")) {
     botReply("বিদায়! আবার দেখা হবে 😊");
-  } else if (["hello", "hii", "হাই", "হ্যালো", "hey"].some(w => userInput.includes(w))) {
-    botReply("হ্যালো! কীভাবে সাহায্য করতে পারি? 😊");
-  } else if (nameWords.some(w => userInput.includes(w))) {
-    botReply("আমার নাম ChatBot! আমি অয়নের তৈরি ডিজিটাল বন্ধু 🤖");
-  } else if (whoMadeWords.some(w => userInput.includes(w))) {
-    botReply("আমাকে বানিয়েছেন অয়ন মহাপাত্র — একজন প্রতিভাবান ছাত্র! 👨‍💻");
-  } else if (howWords.some(w => userInput.includes(w))) {
-    botReply("আমি ভালো আছি, তুমি কেমন আছো?");
-  } else if (whereWords.some(w => userInput.includes(w))) {
-    botReply("আমি ইন্টারনেটে থাকি 🌐");
-  } else if (dateWords.some(w => userInput.includes(w))) {
+  } else if (includes("hello", "hii", "হাই", "হ্যালো", "hey")) {
+    botReply("হ্যালো! কেমন আছো? প্রশ্ন করতে পারো 😊");
+  } else if (includes("tomar nam", "tumi ke", "your name", "nam ki")) {
+    botReply("আমার নাম ChatBot, অয়নের ডিজিটাল বন্ধু 🤖");
+  } else if (includes("banieche", "made you", "ke baniyeche", "creator", "toiri", "banalo", "ke toke", "ke toiri")) {
+    botReply("আমাকে তৈরি করেছেন অয়ন মহাপাত্র — একজন উদ্যমী ছাত্র 👨‍💻");
+  } else if (includes("kemon acho", "valo acho", "how are", "kamon achish")) {
+    botReply("আমি ভালো আছি! তুমিও ভালো থেকো 😊");
+  } else if (includes("kothay thako", "location", "thako", "tumi kothay", "thakis")) {
+    botReply("আমি ইন্টারনেটে থাকি 🌐 সব জায়গা থেকেই দেখা যায়!");
+  } else if (includes("aj ki din", "kon din", "aaj", "ajke", "ki din")) {
     botReply("আজ " + day + "।");
-  } else if (timeWords.some(w => userInput.includes(w))) {
+  } else if (includes("somoy", "koto baje", "time", "ekhon koto", "kolota")) {
     botReply("এখন সময়: " + currentTime);
-  } else if (friendWords.some(w => userInput.includes(w))) {
+  } else if (includes("bondhu", "friend", "amar bondhu")) {
     botReply("অবশ্যই! আমি তোমার ডিজিটাল বন্ধু 🤝");
-  } else if (pmWords.some(w => userInput.includes(w))) {
+  } else if (includes("pradhanmontri", "pm", "ভারতের প্রধানমন্ত্রী", "modi")) {
     botReply("ভারতের প্রধানমন্ত্রী হলেন নরেন্দ্র মোদি 🇮🇳");
-  } else if (cmWords.some(w => userInput.includes(w))) {
+  } else if (includes("mukhyomontri", "cm", "বাংলার মুখ্যমন্ত্রী", "mamata")) {
     botReply("পশ্চিমবঙ্গের মুখ্যমন্ত্রী হলেন মমতা ব্যানার্জী 🧕");
-  } else if (capitalWords.some(w => userInput.includes(w))) {
+  } else if (includes("rajdhani", "capital", "capital city")) {
     botReply("ভারতের রাজধানী হল নতুন দিল্লি 🏙️");
-  } else if (ayanPlaceWords.some(w => userInput.includes(w))) {
-    botReply("অয়ন থাকেন পশ্চিম মেদিনীপুর জেলার নারায়ণগড় থানার বিরবিরা গ্রামে 🏡");
-  } else if (languageWords.some(w => userInput.includes(w))) {
-    botReply("ভারতের প্রধান ভাষা হিন্দি 🇮🇳 এবং অনেক রাজ্যে নিজস্ব ভাষা রয়েছে। পশ্চিমবঙ্গে বাংলা 🗣️");
-  } else if (countryWords.some(w => userInput.includes(w))) {
-    botReply("আমি ভারতের নাগরিকদের জন্য তৈরি একটি চ্যাটবট 🇮🇳");
-  } else if (aiWords.some(w => userInput.includes(w))) {
-    botReply("হ্যাঁ! আমি কৃত্রিম বুদ্ধিমত্তা (AI)-এর উপর তৈরি 🤖");
-  } else if (presidentWords.some(w => userInput.includes(w))) {
+  } else if (includes("ayan kothay", "ayan thake", "ayan ke", "creator kothay")) {
+    botReply("অয়ন পশ্চিম মেদিনীপুর জেলার নারায়ণগড় থানার বিরবিরা গ্রামে থাকেন 🏡");
+  } else if (includes("bhasha", "language", "বাংলার ভাষা", "bharoter bhasha")) {
+    botReply("ভারতের প্রধান ভাষা হিন্দি 🇮🇳 এবং পশ্চিমবঙ্গে বাংলা 🗣️");
+  } else if (includes("desh", "country", "india", "bharot")) {
+    botReply("আমি ভারতের নাগরিকদের সাহায্যের জন্য তৈরি 🇮🇳");
+  } else if (includes("ai", "robot", "artificial", "machine", "smart")) {
+    botReply("হ্যাঁ, আমি কৃত্রিম বুদ্ধিমত্তার উপর ভিত্তি করে বানানো একটি চ্যাটবট 🤖");
+  } else if (includes("president", "rashtrapoti", "রাষ্ট্রপতি")) {
     botReply("ভারতের রাষ্ট্রপতি হলেন দ্রৌপদী মুর্মু 🙏");
-  } else if (loveWords.some(w => userInput.includes(w))) {
-    botReply("আমি AI, ভালোবাসা বা বিয়ে আমার কাজ না 😅");
-  } else if (jokeWords.some(w => userInput.includes(w))) {
-    botReply("একজন বললো, আমি পড়া মুখস্থ করতে পারি না। বই বললো — আমি তোর পেটে ঢুকবো না, মাথায় ঢুক 😜");
+  } else if (includes("valobashi", "love", "biye", "bhalobasi")) {
+    botReply("আমি AI! ভালোবাসা আর বিয়ে আমার কাজ না 😅");
+  } else if (includes("joke", "funny", "mojar", "hasir")) {
+    botReply("একজন বলল, আমার পেট খারাপ। আমি বললাম — পেটের ওপর তো তোমার খুব বিশ্বাস 😅");
+  } else if (includes("tomar boyosh", "boyosh", "age", "kotobochor")) {
+    botReply("আমি সময়ের সাথে সাথে আপডেট হই — বয়সে অসীম 😊");
+  } else if (includes("kaj ki", "tumi ki paro", "ki paro", "kam ki", "kaja")) {
+    botReply("আমি প্রশ্নের উত্তর দিতে পারি, বন্ধু হতে পারি, তথ্য দিতে পারি, আর মজা করতে পারি! 💬🤖");
   } else {
-    botReply("দুঃখিত, আমি এটা বুঝতে পারিনি। অনুগ্রহ করে সহজভাবে আবার বলো 😊");
+    botReply("Ayan amake egulo sekhyni ami sikhe bolbo 😊");
   }
 }
