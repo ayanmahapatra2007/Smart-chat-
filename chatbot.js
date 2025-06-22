@@ -1,10 +1,3 @@
-function botReply(message) {
-  const chatBox = document.getElementById("chat-box");
-  const para = document.createElement("p");
-  para.textContent = "🤖 " + message;
-  chatBox.appendChild(para);
-}
-
 function sendMessage() {
   const input = document.getElementById("user-input");
   const userInput = input.value.toLowerCase().trim();
@@ -22,9 +15,9 @@ function sendMessage() {
   userPara.textContent = "🧑‍💬 " + userInput;
   chatBox.appendChild(userPara);
 
-  // স্মার্ট প্রশ্ন ডিটেকশন
   const includes = (...keywords) => keywords.some(k => userInput.includes(k));
 
+  // সাধারণ প্রশ্ন
   if (includes("exit", "bye", "biday", "ber hoye jao")) {
     botReply("বিদায়! আবার দেখা হবে 😊");
   } else if (includes("hello", "hii", "হাই", "হ্যালো", "hey")) {
@@ -67,7 +60,30 @@ function sendMessage() {
     botReply("আমি সময়ের সাথে সাথে আপডেট হই — বয়সে অসীম 😊");
   } else if (includes("kaj ki", "tumi ki paro", "ki paro", "kam ki", "kaja")) {
     botReply("আমি প্রশ্নের উত্তর দিতে পারি, বন্ধু হতে পারি, তথ্য দিতে পারি, আর মজা করতে পারি! 💬🤖");
+
+  // বিজ্ঞানসম্মত নাম ও উপকারিতা
+  } else if (includes("bager nam", "bager biggan sommoto nam", "bagh", "tiger name")) {
+    botReply("বাঘের বিজ্ঞানসম্মত নাম: *Panthera tigris tigris* 🐅");
+  } else if (includes("bager upokarita", "bagher upokarita", "tiger benefits")) {
+    botReply("বাঘ খাদ্যচক্রের শীর্ষে থেকে বনজ পরিবেশের ভারসাম্য রক্ষা করে 🐅🌳");
+  } else if (includes("catla", "catla mach", "catla fish name")) {
+    botReply("কাতলা মাছের বিজ্ঞানসম্মত নাম: *Catla catla* 🐟");
+  } else if (includes("catla upokarita", "catla macher upokarita")) {
+    botReply("কাতলা মাছ প্রোটিনসমৃদ্ধ এবং হৃদয় ও মস্তিষ্কের জন্য উপকারী 🧠💪");
+  } else if (includes("rui", "rui mach", "rui name")) {
+    botReply("রুই মাছের বিজ্ঞানসম্মত নাম: *Labeo rohita* 🐟");
+  } else if (includes("rui upokarita", "rui macher upokarita")) {
+    botReply("রুই মাছ হজমে সহায়তা করে এবং হাড় শক্ত করে 🦴");
+  } else if (includes("bot gach", "botgach", "botgacher nam")) {
+    botReply("বটগাছের বিজ্ঞানসম্মত নাম: *Ficus benghalensis* 🌳");
+  } else if (includes("bot gach upokarita", "botgacher upokarita")) {
+    botReply("বটগাছ ছায়া দেয়, পরিবেশে অক্সিজেন সরবরাহ করে এবং পবিত্র বৃক্ষ হিসেবে পূজিত হয় 🌿");
+  } else if (includes("padma", "padma ful", "padma flower")) {
+    botReply("পদ্মফুলের বিজ্ঞানসম্মত নাম: *Nelumbo nucifera* 🌸");
+  } else if (includes("padma upokarita", "padma fuler upokarita")) {
+    botReply("পদ্ম সৌন্দর্য ও পবিত্রতার প্রতীক এবং আয়ুর্বেদিক ওষুধেও ব্যবহৃত হয় 💮");
+
   } else {
-    botReply("Ayan amake egulo sekhyni ami sikhe bolbo 😊");
+    botReply("Ayan amake eta sekhayni, ami pore bole debo 😊");
   }
 }
