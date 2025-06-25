@@ -16,7 +16,7 @@ function sendMessage() {
     { keywords: ["তোমার নাম কি", "তুমি কে", "তুমি কারা","Tomar name ki", "tumi ke", "tumi kara"], reply: "আমার নাম ChatBot, আমি তোমার ডিজিটাল বন্ধু 🤖" },
     { keywords: ["তোমাকে কে বানিয়েছে", "তুমি কে বানিয়েছো","Tomake ke baniye6e", "Tomake ke baniyeche", "tomake ke baniye6e"], reply: "আমাকে বানিয়েছে Ayan Mahapatra 🛠️" },
     { keywords: ["কেমন আছো", "how are you", "tumi kemon acho", "Tumi kemon a6o"], reply: "আমি ভালো আছি, তুমি কেমন আছো? 😊" },
-    { keywords: ["আজকে কি দিন", "Ajke ki din", "aj ki" "Ajke ki"], reply: "আজকে হলো " + new Date().toLocaleDateString('bn-BD', { weekday: 'long' }) },
+    { keywords: ["আজকে কি দিন", "Ajke ki din", "aj ki", "Ajke ki"], reply: "আজকে হলো " + new Date().toLocaleDateString('bn-BD', { weekday: 'long' }) },
     { keywords: ["এখন কটা বাজে", "সময় কতো", "Akhon kota baje", "akhon kota baje", "somoy koto holo","Somoy koto holo"], reply: "এখন সময় " + new Date().toLocaleTimeString('bn-BD') },
 
     // ভারত ও পশ্চিমবঙ্গ
