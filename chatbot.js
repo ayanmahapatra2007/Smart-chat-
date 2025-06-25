@@ -10,11 +10,18 @@ function sendMessage() {
   let userInput = input.value.toLowerCase().trim();
   input.value = "";
 
+  const chatBox = document.getElementById("chat-box");
+
+  // ইউজারের প্রশ্ন দেখাও
+  const userPara = document.createElement("p");
+  userPara.textContent = "🧑‍💬 " + userInput;
+  chatBox.appendChild(userPara);
+
   const replies = [
     // সাধারণ প্রশ্ন
     { keywords: ["হ্যালো", "হাই", "hello", "hi"], reply: "হ্যালো! তোমার সঙ্গে কথা বলে ভালো লাগছে 😊 প্রশ্ন করো।" },
-    { keywords: ["তোমার নাম কি", "তুমি কে", "tumi ke", "tomar name ki"], reply: "আমার নাম AyanBot, আমি তোমার ডিজিটাল বন্ধু 🤖" },
-    { keywords: ["তোমাকে কে বানিয়েছে", "toke ke baniyeche", "tomake ke baniye6e"], reply: "আমাকে বানিয়েছে Ayan Mahapatra 🛠️" },
+    { keywords: ["তোমার নাম কি", "তুমি কে", "tumi ke", "tomar name ki"], reply: "আমার নাম ChatBot, আর আমাকে বানিয়েছে Ayan 💻" },
+    { keywords: ["তোমাকে কে বানিয়েছে", "tomake ke baniye6e", "ke baniyeche"], reply: "আমাকে বানিয়েছে Ayan Mahapatra 🛠️" },
     { keywords: ["কেমন আছো", "how are you", "tumi kemon acho"], reply: "আমি ভালো আছি, তুমি কেমন আছো? 😊" },
     { keywords: ["আজকে কি দিন", "ajke ki din", "aj ki"], reply: "আজকে হলো " + new Date().toLocaleDateString('bn-BD', { weekday: 'long' }) },
     { keywords: ["এখন কটা বাজে", "somoy koto", "akhon kota baje"], reply: "এখন সময় " + new Date().toLocaleTimeString('bn-BD') },
@@ -43,7 +50,7 @@ function sendMessage() {
     { keywords: ["(a+b)^2"], reply: "(a + b)² = a² + 2ab + b²" },
     { keywords: ["(a-b)^2"], reply: "(a - b)² = a² - 2ab + b²" },
     { keywords: ["(a+b)(a-b)"], reply: "(a + b)(a - b) = a² - b²" },
-    { keywords: ["গতি =", "speed formula"], reply: "গতি = দূরত্ব ÷ সময়" },
+    { keywords: ["গতি =","goti", "speed formula"], reply: "গতি = দূরত্ব ÷ সময়" },
     { keywords: ["ত্রিভুজের ক্ষেত্রফল", "triangle area"], reply: "½ × base × height" },
     { keywords: ["বৃত্তের ক্ষেত্রফল", "circle area"], reply: "π × r²" },
     { keywords: ["গড় কাকে বলে", "average ki"], reply: "গড় = মোট মান ÷ মোট সংখ্যা" },
