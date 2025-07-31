@@ -5,16 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Chat - Ayan's ChatBot</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>🤖 Smart Chat</h1>
-    <div id="chat-box" class="chat-box"></div>
+  <div class="chat-container">
+    <header>
+      <h1>🤖 Smart Chat</h1>
+      <p>আপনার নিজের AI সহচর | Powered by Ayan</p>
+    </header>
+
+    <main id="chat-box" class="chat-box">
+      <!-- messages will be inserted here -->
+    </main>
+
     <div class="input-area">
       <input type="text" id="user-input" placeholder="আপনার প্রশ্ন লিখুন..." onkeydown="if(event.key==='Enter') sendMessage()" />
-      <button onclick="sendMessage()">পাঠান</button>
+      <button onclick="sendMessage()">📨</button>
     </div>
-    <p class="footer">Created by Ayan Mahapatra with help of ChatGPT ❤️</p>
+
+    <footer>
+      <p>Created by <strong>Ayan Mahapatra</strong> with ❤️ and ChatGPT</p>
+    </footer>
   </div>
 
   <script src="chatbot.js"></script>
